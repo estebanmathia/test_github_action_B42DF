@@ -238,7 +238,7 @@ export function alertLog(rule: Rules, conditions: SubResultScan[], objectResourc
                 logger.error(sentenceConditionLog(objectResource.id));
             } 
             logger.debug(jsome.getColoredString(conditions));
-            logger.info(propertyToSend(rule, objectResource, true));
+            logger.error(propertyToSend(rule, objectResource, true));
             break;
         case LevelEnum.FATAL:
             if(fullDetail){
@@ -246,7 +246,7 @@ export function alertLog(rule: Rules, conditions: SubResultScan[], objectResourc
                 logger.error(sentenceConditionLog(objectResource.id));
             }
             logger.debug(jsome.getColoredString(conditions));
-            logger.info(propertyToSend(rule, objectResource, true));
+            logger.error(propertyToSend(rule, objectResource, true));
             break;
         default:
             warnLog(rule, conditions, objectResource, fullDetail);

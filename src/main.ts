@@ -68,14 +68,6 @@ export async function main() {
             let result = checkRules(setting.rules, resources, setting.alert);
             logger.setOutput('resultScan', result);
             if(setting.alert.global.enabled){
-                logger.info("alert global");
-                logger.info(setting.alert.global.to.toString());
-                logger.info(setting.alert.global.type.toString());
-                logger.info(setting.alert.global.enabled.toString());
-                logger.info(core.getInput('EMAILHOST'));
-                logger.info(core.getInput('EMAILPORT'));
-                logger.info(core.getInput('EMAILUSER'));
-                logger.info(Number(core.getInput('EMAILPORT')) == 465);
                 let compteError = alertGlobal(result, setting.alert.global);
                 if(compteError[2]>0 || compteError[3]>0){
                     stop = true;
