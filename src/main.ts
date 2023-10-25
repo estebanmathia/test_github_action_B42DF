@@ -40,7 +40,7 @@ require('dotenv').config();
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////                                                                   // reading environnement vars                                                       // file system
 
 export async function main() {
-    //core.addPath('./config');
+    core.addPath('./config');
     //core.addPath('./rules');
     const logger = getNewLogger("MainLogger");
 
