@@ -28,7 +28,7 @@
 import { checkRules, gatheringRules } from "./services/analyse.service";
 import { alertGlobal } from "./services/alerte.service";
 import { AsciiArtText, talkAboutOtherProject} from "./services/display.service";
-import { getEnvVar } from "./services/manageVarEnvironnement.service";
+import { getEnvVar, setEnvVar } from "./services/manageVarEnvironnement.service";
 import { loadAddOns } from "./services/addOn.service";
 import { deleteFile } from "./helpers/files";
 import {getNewLogger} from "./services/logger.service";
@@ -42,6 +42,11 @@ require('dotenv').config();
 export async function main() {
     core.addPath('./config');
     //core.addPath('./rules');
+    let customRules = await getEnvVar("MYOWNRULES");
+    if(customRules != "NO"){
+        core.addPath(customRules);
+        await setEnvVar("RULESDIRECTORY", customRules);
+    }
     const logger = getNewLogger("MainLogger");
 
     logger.debug("test");
